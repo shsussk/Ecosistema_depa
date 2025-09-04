@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma I+D - Departamento de Investigación y Desarrollo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Página de Bienvenida -->
+    <div id="welcomePage" class="welcome-page">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <!-- Columna izquierda - Logo y branding -->
+                <div class="col-lg-5 welcome-left d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <div class="logo-container mb-4">
+                            <div class="company-logo">
+                                <div class="logo-circle"></div>
+                                <div class="logo-leaves">
+                                    <div class="leaf leaf-1"></div>
+                                    <div class="leaf leaf-2"></div>
+                                    <div class="leaf leaf-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="company-title">Investigación y Desarrollo</h1>
+                        <p class="company-subtitle">Innovación Agrícola Sostenible</p>
+                    </div>
+                </div>
+                
+                <!-- Columna derecha - Filosofía y acceso -->
+                <div class="col-lg-7 welcome-right d-flex align-items-center">
+                    <div class="philosophy-container">
+                        <div class="philosophy-header">
+                            <h2 class="philosophy-main-title">Donde la ciencia se encuentra con la sabiduría del campo</h2>
+                        </div>
+                        
+                        <div class="philosophy-content">
+                            <h3 class="philosophy-title">
+                                <i class="fas fa-seedling me-3"></i>
+                                Nuestra Filosofía
+                            </h3>
+                            <p class="philosophy-text">
+                                Creemos que las mejores soluciones nacen cuando combinamos el rigor científico 
+                                con la experiencia práctica del campo. Aquí cada voz importa, cada observación 
+                                cuenta, y cada éxito se celebra en conjunto.
+                            </p>
+                            
+                            <div class="philosophy-values">
+                                <div class="value-item">
+                                    <div class="value-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4>Colaboración sin jerarquías</h4>
+                                        <p>Todos aprendemos de todos</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="value-item">
+                                    <div class="value-icon">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4>Curiosidad científica</h4>
+                                        <p>Cada problema es una oportunidad</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="value-item">
+                                    <div class="value-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4>Regeneración constante</h4>
+                                        <p>Mejoramos continuamente</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="value-item">
+                                    <div class="value-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4>Calor humano</h4>
+                                        <p>La tecnología nos une, no nos separa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="entry-section">
+                                <div class="entry-divider">
+                                    <span class="divider-text">Entrar al Ecosistema</span>
+                                </div>
+                                <button id="enterSystemBtn" class="btn-enter-system">
+                                    <i class="fas fa-rocket me-2"></i>
+                                    Comenzar Investigación
+                                    <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aplicación Principal -->
+    <div id="mainApp" class="main-app d-none">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="mini-logo">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h4>I+D Platform</h4>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i><span>Dashboard</span></a></li>
+                <li><a href="#" class="nav-link" data-section="ensayos">
+                    <i class="fas fa-flask"></i><span>Ensayos</span></a></li>
+                <li><a href="#" class="nav-link" data-section="problemas">
+                    <i class="fas fa-exclamation-triangle"></i><span>Problemas</span></a></li>
+                <li><a href="#" class="nav-link" data-section="colaboradores">
+                    <i class="fas fa-users"></i><span>Colaboradores</span></a></li>
+                <li><a href="#" class="nav-link" data-section="colaboracion">
+                    <i class="fas fa-network-wired"></i><span>Red Colaboración</span></a></li>
+                <li><a href="#" class="nav-link" data-section="resultados">
+                    <i class="fas fa-trophy"></i><span>Resultados</span></a></li>
+                <li><a href="#" class="nav-link" data-section="analytics">
+                    <i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <button id="sidebarToggle" class="btn-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="pageTitle">Dashboard Principal</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Dr. Investigador</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Secciones de Contenido -->
+            
+            <!-- Dashboard -->
+            <section id="dashboard" class="content-section active">
+                <div class="row g-4 mb-4">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3 id="totalEnsayos">0</h3>
+                                <p>Total Ensayos</p>
+                                <span class="kpi-trend positive">+12% este mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon roi">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3 id="roiPromedio">$0</h3>
+                                <p>ROI Promedio</p>
+                                <span class="kpi-trend positive">+8% este mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3 id="tasaExito">0%</h3>
+                                <p>Tasa de Éxito</p>
+                                <span class="kpi-trend positive">+5% este mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="kpi-card">
+                            <div class="kpi-icon publications">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <h3 id="totalPublicaciones">0</h3>
+                                <p>Publicaciones</p>
+                                <span class="kpi-trend positive">+3 nuevas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-chart-area me-2"></i>Progreso de Ensayos</h4>
+                                <div class="chart-controls">
+                                    <select class="form-select form-select-sm">
+                                        <option>Últimos 6 meses</option>
+                                        <option>Este año</option>
+                                        <option>Todo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="ensayosChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-exclamation-triangle me-2"></i>Problemas por Prioridad</h4>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="problemasChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <div class="col-12">
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <h4><i class="fas fa-clock me-2"></i>Actividades Recientes</h4>
+                                <button class="btn btn-sm btn-outline-primary">Ver todas</button>
+                            </div>
+                            <div class="activity-timeline" id="activityTimeline">
+                                <!-- Se llena dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ensayos -->
+            <section id="ensayos" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-flask me-2"></i>Gestión de Ensayos</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ensayoModal">
+                        <i class="fas fa-plus me-2"></i>Nuevo Ensayo
+                    </button>
+                </div>
+
+                <div class="table-card">
+                    <div class="table-header">
+                        <div class="table-filters">
+                            <select id="filtroEstado" class="form-select">
+                                <option value="">Todos los estados</option>
+                                <option value="Planificado">Planificado</option>
+                                <option value="En Progreso">En Progreso</option>
+                                <option value="Completado">Completado</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                            <select id="filtroArea" class="form-select">
+                                <option value="">Todas las áreas</option>
+                                <option value="Fitopatología">Fitopatología</option>
+                                <option value="Nutrición Vegetal">Nutrición Vegetal</option>
+                                <option value="Genética">Genética</option>
+                                <option value="Suelos">Suelos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="ensayosTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Área</th>
+                                    <th>Responsable I+D</th>
+                                    <th>Métrica Objetivo</th>
+                                    <th>Inicio</th>
+                                    <th>Fin Estimado</th>
+                                    <th>ROI Estimado</th>
+                                    <th>Progreso</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Se llena dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problemas -->
+            <section id="problemas" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-exclamation-triangle me-2"></i>Reporte de Problemas</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#problemaModal">
+                        <i class="fas fa-plus me-2"></i>Reportar Problema
+                    </button>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="problem-list" id="problemsList">
+                            <!-- Se llena dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Colaboradores -->
+            <section id="colaboradores" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users me-2"></i>Directorio de Colaboradores</h2>
+                    <div class="header-controls">
+                        <select id="filtroEspecialidad" class="form-select">
+                            <option value="">Todas las especialidades</option>
+                            <option value="Fitopatología">Fitopatología</option>
+                            <option value="Nutrición">Nutrición</option>
+                            <option value="Genética">Genética</option>
+                            <option value="Suelos">Suelos</option>
+                        </select>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#colaboradorModal">
+                            <i class="fas fa-user-plus me-2"></i>Nuevo Colaborador
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="colaboradoresList">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </section>
+
+            <!-- Red Colaboración -->
+            <section id="colaboracion" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-network-wired me-2"></i>Red de Colaboración</h2>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="calendar-card">
+                            <div class="calendar-header">
+                                <h4><i class="fas fa-calendar me-2"></i>Calendario Compartido</h4>
+                            </div>
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="expertise-card">
+                            <div class="expertise-header">
+                                <h4><i class="fas fa-brain me-2"></i>Directorio de Expertise</h4>
+                            </div>
+                            <div class="expertise-list" id="expertiseList">
+                                <!-- Se llena dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resultados -->
+            <section id="resultados" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy me-2"></i>Historias de Éxito</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultadoModal">
+                        <i class="fas fa-plus me-2"></i>Nueva Historia
+                    </button>
+                </div>
+
+                <div class="row g-4" id="historiasList">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </section>
+
+            <!-- Analytics Avanzada -->
+            <section id="analytics" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-pie me-2"></i>Centro de Analítica Avanzada</h2>
+                    <div class="analytics-controls">
+                        <select class="form-select">
+                            <option>Últimos 12 meses</option>
+                            <option>Este año</option>
+                            <option>Todo el período</option>
+                        </select>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-download me-2"></i>Exportar Reporte
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Métricas Ejecutivas -->
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="analytics-card">
+                            <div class="analytics-icon predictive">
+                                <i class="fas fa-crystal-ball"></i>
+                            </div>
+                            <div class="analytics-content">
+                                <h4>Análisis Predictivo</h4>
+                                <p class="analytics-value">87%</p>
+                                <span class="analytics-label">Precisión del modelo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="analytics-card">
+                            <div class="analytics-icon benchmark">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="analytics-content">
+                                <h4>Benchmarking</h4>
+                                <p class="analytics-value">+15%</p>
+                                <span class="analytics-label">vs. industria</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="analytics-card">
+                            <div class="analytics-icon roi">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="analytics-content">
+                                <h4>ROI Analysis</h4>
+                                <p class="analytics-value">234%</p>
+                                <span class="analytics-label">Retorno promedio</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="analytics-card">
+                            <div class="analytics-icon productivity">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="analytics-content">
+                                <h4>Productividad</h4>
+                                <p class="analytics-value">+28%</p>
+                                <span class="analytics-label">vs. año anterior</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboards Avanzados -->
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="advanced-chart-card">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-chart-area me-2"></i>Análisis de Tendencias</h4>
+                                <div class="chart-legend">
+                                    <span class="legend-item"><span class="legend-color success"></span>Éxitos</span>
+                                    <span class="legend-item"><span class="legend-color warning"></span>En Progreso</span>
+                                    <span class="legend-item"><span class="legend-color danger"></span>Problemas</span>
+                                </div>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="trendsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="advanced-chart-card">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-user-chart me-2"></i>Productividad por Investigador</h4>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="productivityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <div class="col-lg-8">
+                        <div class="advanced-chart-card">
+                            <div class="chart-header">
+                                <h4><i class="fas fa-sitemap me-2"></i>Mapa de Correlaciones</h4>
+                                <p class="chart-subtitle">Relación entre variables de éxito en ensayos</p>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="correlationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="insights-card">
+                            <div class="insights-header">
+                                <h4><i class="fas fa-lightbulb me-2"></i>Insights Clave</h4>
+                            </div>
+                            <div class="insights-list">
+                                <div class="insight-item">
+                                    <div class="insight-icon success">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h5>Mejora en Nutrición</h5>
+                                        <p>Los ensayos de nutrición muestran 23% más éxito este trimestre</p>
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <div class="insight-icon warning">
+                                        <i class="fas fa-exclamation"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h5>Atención en Fitopatología</h5>
+                                        <p>Incremento del 15% en problemas reportados en esta área</p>
+                                    </div>
+                                </div>
+                                <div class="insight-item">
+                                    <div class="insight-icon info">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="insight-content">
+                                        <h5>Tendencia Positiva</h5>
+                                        <p>ROI promedio ha crecido consistentemente en los últimos 6 meses</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modales -->
+    
+    <!-- Modal Ensayo -->
+    <div class="modal fade" id="ensayoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Ensayo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="ensayoForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Área</label>
+                                <select name="area" class="form-select" required>
+                                    <option value="">Seleccionar área</option>
+                                    <option value="Fitopatología">Fitopatología</option>
+                                    <option value="Nutrición Vegetal">Nutrición Vegetal</option>
+                                    <option value="Genética">Genética</option>
+                                    <option value="Suelos">Suelos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Reportado por</label>
+                                <input type="text" name="reportado_por" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha</label>
+                                <input type="date" name="fecha" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Prioridad</label>
+                                <select name="prioridad" class="form-select" required>
+                                    <option value="">Seleccionar prioridad</option>
+                                    <option value="Alta">Alta</option>
+                                    <option value="Media">Media</option>
+                                    <option value="Baja">Baja</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Responsable I+D</label>
+                                <select name="responsable_id" class="form-select" required>
+                                    <option value="">Seleccionar responsable</option>
+                                    <!-- Se llena dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Validador de Campo</label>
+                                <input type="text" name="validador_campo" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Métrica Objetivo</label>
+                                <textarea name="metrica_objetivo" class="form-control" rows="2" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha Inicio</label>
+                                <input type="date" name="fecha_inicio" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha Fin Estimada</label>
+                                <input type="date" name="fecha_estimada_fin" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">ROI Estimado</label>
+                                <input type="number" name="roi_estimado" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Estado</label>
+                                <select name="estado" class="form-select" required>
+                                    <option value="">Seleccionar estado</option>
+                                    <option value="Planificado">Planificado</option>
+                                    <option value="En Progreso">En Progreso</option>
+                                    <option value="Completado">Completado</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEnsayo()">Guardar Ensayo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Problema -->
+    <div class="modal fade" id="problemaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reportar Problema</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="problemaForm">
+                        <div class="mb-3">
+                            <label class="form-label">Área</label>
+                            <input type="text" name="area" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Reportado por</label>
+                            <input type="text" name="reportado_por" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" name="fecha" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="descripcion" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Urgencia</label>
+                            <select name="urgencia" class="form-select" required>
+                                <option value="">Seleccionar urgencia</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarProblema()">Reportar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Colaborador -->
+    <div class="modal fade" id="colaboradorModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Colaborador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="colaboradorForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre Completo</label>
+                                <input type="text" name="nombre" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Cargo</label>
+                                <input type="text" name="cargo" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Años de Experiencia</label>
+                                <input type="number" name="anos_experiencia" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Especialidad</label>
+                                <select name="especialidad" class="form-select" required>
+                                    <option value="">Seleccionar especialidad</option>
+                                    <option value="Fitopatología">Fitopatología</option>
+                                    <option value="Nutrición">Nutrición</option>
+                                    <option value="Genética">Genética</option>
+                                    <option value="Suelos">Suelos</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Áreas Fuertes (separadas por coma)</label>
+                                <textarea name="areas_fuertes" class="form-control" rows="2" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Número de Aportes</label>
+                                <input type="number" name="aportes" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Ensayos Exitosos</label>
+                                <input type="number" name="ensayos_exitosos" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">URL de Foto</label>
+                                <input type="url" name="foto" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarColaborador()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Historia de Éxito -->
+    <div class="modal fade" id="resultadoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Historia de Éxito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="resultadoForm">
+                        <div class="mb-3">
+                            <label class="form-label">Problema Original</label>
+                            <textarea name="problema_original" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Solución</label>
+                            <textarea name="solucion" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Testimonio</label>
+                            <textarea name="testimonio" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha de Resolución</label>
+                                <input type="date" name="fecha_resolucion" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Impacto ROI</label>
+                                <input type="number" name="impacto_roi" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Equipo Colaborador (nombres separados por coma)</label>
+                            <textarea name="equipo_colaborador" class="form-control" rows="2" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarHistoria()">Guardar Historia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
